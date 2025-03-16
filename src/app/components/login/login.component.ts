@@ -1,43 +1,61 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ApiService } from 'src/app/services/api.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
-
-  
-  email: string = '';
-  password: string = ''; 
-  
-  constructor(private router: Router) { } 
-
-
-   onLogin() {
-    console.log('Usuario autenticado correctamente');
-    this.router.navigate(['/navbar']);
-  }
- 
+  constructor(private router: Router, private apiService: ApiService) {}
 
   isModalOpen = false;
-  
+
+  userLogin = {
+    nombre: '',
+    identificacion: '',
+  };
+
   user = {
     nombre: '',
     identificacion: '',
-    correo: ''
+    correo: '',
   };
 
-  registerUser() {
-    console.log('Usuario registrado:', this.user);
 
-  }
+    async loginUser() {
+      try {
+        const response = await firstValueFrom(this.apiService.loginUser(this.userLogin));
+        console.log('Respuesta del backend:', response);
+        
+        if (response.success) {
+          alert('Inicio de sesión exitoso');
+          this.router.navigate(['/navbar']);
+        } else {
+          alert('Credenciales incorrectas');
+        }
+      } catch (error) {
+        console.error('Error en la solicitud:', error);
+        alert('Error al iniciar sesión');
+      }
+    }
+    
+    async registerUser() {
+      try {
+        const response = await firstValueFrom(this.apiService.registerUser(this.user));
+        console.log('Usuario registrado correctamente:', response);
+        alert('Usuario registrado exitosamente');
+        this.closeModal();
+      } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        alert('Error al registrar usuario');
+      }
+    }
 
   openModal(event: Event) {
-    event.preventDefault(); 
+    event.preventDefault();
     this.isModalOpen = true;
   }
 

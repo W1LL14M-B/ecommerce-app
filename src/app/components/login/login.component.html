@@ -1,54 +1,91 @@
+<div class="col-md-4 col-md-offset-4" id="login">
+  <section id="inner-wrapper" class="login">
+    <article>
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"> </i></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              [(ngModel)]="userLogin.nombre"
+              name="nombre"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-card"> </i></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="identificacion"
+              [(ngModel)]="userLogin.identificacion"
+              name="identificacion"
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-success btn-block"
+          (click)="loginUser()"
+        >
+          Login
+        </button>
 
-
- <div class="col-md-4 col-md-offset-4" id="login">
-    <section id="inner-wrapper" class="login">
-        <article>
-            <form>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
-                        <input type="text" class="form-control" placeholder="Nombre">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-key"> </i></span>
-                        <input type="password" class="form-control" placeholder="Password">
-                    </div>
-                </div>
-                <button type="button" class="btn btn-success btn-block" (click)="onLogin()">Login</button>
-
-                <div>
-                    <br />
-                    <a href="#" (click)="openModal($event)">Registro</a>
-                </div>
-            </form>
-        </article>
-    </section>
+        <div>
+          <br />
+          <a href="#" (click)="openModal($event)">Registro</a>
+        </div>
+      </form>
+    </article>
+  </section>
 </div>
 
 <!-- Modal  -->
 <div *ngIf="isModalOpen" class="modal-overlay">
-    <div class="modal-content">
-        <h5>Registro de Usuario</h5>
-        <form #registerForm="ngForm">
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" [(ngModel)]="user.nombre" name="nombre">
-            </div>
-            <div class="mb-3">
-                <label for="identificacion" class="form-label">Identificación</label>
-                <input type="text" class="form-control" id="identificacion" [(ngModel)]="user.identificacion" name="identificacion">
-            </div>
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo</label>
-                <input type="email" class="form-control" id="correo" [(ngModel)]="user.correo" name="correo">
-            </div>
-        </form>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="registerUser()">Registrar</button>
-        </div>
+  <div class="modal-content">
+    <h5>Registro de Usuario</h5>
+    <form #registerForm="ngForm">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          [(ngModel)]="user.nombre"
+          name="nombre"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="identificacion" class="form-label">Identificación</label>
+        <input
+          type="text"
+          class="form-control"
+          id="identificacion"
+          [(ngModel)]="user.identificacion"
+          name="identificacion"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input
+          type="email"
+          class="form-control"
+          id="correo"
+          [(ngModel)]="user.correo"
+          name="correo"
+        />
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">
+        Cerrar
+      </button>
+      <button type="button" class="btn btn-primary" (click)="registerUser()">
+        Registrar
+      </button>
     </div>
+  </div>
 </div>
-

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   private readonly API_URL = ' https://fakestoreapi.com/products';
+  private readonly REGISTER_URL = 'http://localhost:8080/api/usuarios';
+  private readonly LOGIN_URL = 'http://localhost:8080/api/usuarios/login';
 
   constructor(private http: HttpClient) {}
 
@@ -16,4 +18,20 @@ export class ApiService {
   getProducts(): Observable<any> {
     return this.http.get<any>(this.API_URL);
   }
+
+  registerUser(userData: any): Observable<any> {
+    return this.http.post<any>(this.REGISTER_URL, userData);
+  }
+
+  loginUser(credentials: any): Observable<any> {
+    return this.http.post<any>(this.LOGIN_URL, credentials, { responseType: 'json' });
+  }
+
+  /* loginUser(userData: any): Observable<any> {
+    return this.http.post<any>(this.LOGIN_URL, userData);
+  } */
+
+ /*  loginUser(credentials: { nombre: string; identificacion: string }): Observable<any> {
+    return this.http.post<any>(this.LOGIN_URL, credentials);
+  } */
 }
