@@ -12,17 +12,36 @@ export class LoginComponent {
 
   
   email: string = '';
-  password: string = '';
+  password: string = ''; 
   
-  constructor(private router: Router) { }
+  constructor(private router: Router) { } 
 
 
-  onLogin() {
-    // Simulación de autenticación
+   onLogin() {
     console.log('Usuario autenticado correctamente');
-    
-    // Redirigir a /navbar
     this.router.navigate(['/navbar']);
   }
+ 
 
+  isModalOpen = false;
+  
+  user = {
+    nombre: '',
+    identificacion: '',
+    correo: ''
+  };
+
+  registerUser() {
+    console.log('Usuario registrado:', this.user);
+
+  }
+
+  openModal(event: Event) {
+    event.preventDefault(); 
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
 }
