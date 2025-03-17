@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, throwError} from 'rxjs';
+import { HttpClient} from '@angular/common/http';
+import { Observable, map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +27,8 @@ export class ApiService {
     return this.http.post<any>(this.LOGIN_URL, credentials, { responseType: 'json' });
   }
 
-  /* loginUser(userData: any): Observable<any> {
-    return this.http.post<any>(this.LOGIN_URL, userData);
-  } */
 
- /*  loginUser(credentials: { nombre: string; identificacion: string }): Observable<any> {
-    return this.http.post<any>(this.LOGIN_URL, credentials);
-  } */
+
+
+
 }

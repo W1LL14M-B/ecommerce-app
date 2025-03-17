@@ -16,8 +16,8 @@ const routes: Routes = [
     component: NavbarComponent, 
     children: [ 
       { path: 'products', component: ProductsComponent },
-      { path: 'ordenes', component: SearchComponent },
-      { path: 'search', component: OrdenesComponent }
+      { path: 'search', component: SearchComponent },
+      { path: 'ordenes', component: OrdenesComponent }
      
     ] 
   }

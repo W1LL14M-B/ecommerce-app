@@ -1,4 +1,77 @@
-<p>search works!</p>
+<!-- 
+<div class="container mt-4">
+    <h1>SEARCH</h1>
+    <hr />
+    <div class="row">
+
+      <div class="col-5">
+        <form (ngSubmit)="searchHero()">
+          <input
+            type="text"
+            placeholder="Search a hero"
+            class="form-control"
+            name="searchText"
+            [(ngModel)]="searchText"
+            autocomplete="off"
+          />
+          <hr />
+          <button class="btn btn-outline-primary mt-1" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+  
+
+      <div class="col-7">
+        <h4>Results</h4>
+        <hr />
+        <p *ngIf="searchText">Searching for: {{ searchText }}</p>
+      </div>
+    </div>
+  </div>
+  
+ -->
 
 
-<h5>BUSCADOR</h5>
+ <div class="container mt-4">
+    <h1>SEARCH</h1>
+    <hr />
+    <div class="row">
+      <!-- Input de búsqueda -->
+      <div class="col-5">
+        <form (ngSubmit)="searchHero()">
+          <input
+            type="text"
+            placeholder="Search a product"
+            class="form-control"
+            name="searchText"
+            [(ngModel)]="searchText"
+            autocomplete="off"
+          />
+          <hr />
+          <button class="btn btn-outline-primary mt-1" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+  
+      <!-- Resultados alineados horizontalmente -->
+      <div class="col-7">
+        <h4>Results</h4>
+        <hr />
+        <div *ngIf="filteredProducts.length > 0" class="row">
+            <div *ngFor="let product of filteredProducts" class="col-md-6 mb-3">
+              <div class="card">
+                <img [src]="product.image" class="card-img-top img-fluid" alt="{{ product.title }}" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.title }}</h5>
+                  <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+                  <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
